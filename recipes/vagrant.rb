@@ -80,11 +80,6 @@ when "amazon", "centos", "debian", "fedora", "redhat", "ubuntu"
     group "root"
     mode "644"
   end
-
-  #service "supervisor" do
-  #  supports :status => true, :restart => true
-  #  action [:enable, :start]
-  #end
 when "smartos"
   directory "/opt/local/share/smf/supervisord" do
     owner "root"
@@ -103,9 +98,5 @@ when "smartos"
   execute "svccfg-import-supervisord" do
     command "svccfg import /opt/local/share/smf/supervisord/manifest.xml"
     action :nothing
-  end
-
-  service "supervisord" do
-    action [:enable]
   end
 end
